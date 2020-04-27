@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5011F65224569CFB00B8AB2F /* GIFSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011F65124569CFB00B8AB2F /* GIFSearchInteractor.swift */; };
+		5011F6552456A30C00B8AB2F /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 5011F6542456A30C00B8AB2F /* SwiftyGif */; };
 		50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D4245682CA00188715 /* AppDelegate.swift */; };
 		50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D6245682CA00188715 /* SceneDelegate.swift */; };
 		50CF98DC245682CA00188715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CF98DA245682CA00188715 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5011F6552456A30C00B8AB2F /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +223,9 @@
 			dependencies = (
 			);
 			name = "GIF Search";
+			packageProductDependencies = (
+				5011F6542456A30C00B8AB2F /* SwiftyGif */,
+			);
 			productName = "GIF Search";
 			productReference = 50CF98D1245682CA00188715 /* GIF Search.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +298,9 @@
 				Base,
 			);
 			mainGroup = 50CF98C8245682CA00188715;
+			packageReferences = (
+				5011F6532456A30C00B8AB2F /* XCRemoteSwiftPackageReference "SwiftyGif" */,
+			);
 			productRefGroup = 50CF98D2245682CA00188715 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -668,6 +676,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5011F6532456A30C00B8AB2F /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5011F6542456A30C00B8AB2F /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5011F6532456A30C00B8AB2F /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50CF98C9245682CA00188715 /* Project object */;
 }

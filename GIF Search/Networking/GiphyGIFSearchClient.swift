@@ -18,6 +18,15 @@ private struct GiphySearchResponse: Decodable {
 
 private struct GiphyGIF: Decodable {
   let url: String
+  let images: GiphyGIFImages
+}
+
+private struct GiphyGIFImages: Decodable {
+  let fixed_height: GiphyGIFImage
+}
+
+private struct GiphyGIFImage: Decodable {
+  let url: String
 }
 
 class GiphyGIFSearchClient: GIFSearchClient {
@@ -57,7 +66,7 @@ class GiphyGIFSearchClient: GIFSearchClient {
       do {
         let decodedResponse = try self.jsonDecoder.decode(GiphySearchResponse.self, from: data)
         let images: [GIFImage] = decodedResponse.data.compactMap { (giphyImage: GiphyGIF) in
-          guard let url = URL(string: giphyImage.url) else {
+          guard let url = URL(string: giphyImage.images.fixed_height.url) else {
             return nil
           }
           

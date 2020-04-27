@@ -6,16 +6,29 @@
 //  Copyright © 2020 Max. All rights reserved.
 //
 
+import SwiftyGif
 import UIKit
 
 class GIFImageCollectionViewCell: UICollectionViewCell {
-  let titleLabel: UILabel = {
-    let label = UILabel()
-    label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 11)
-    label.numberOfLines = 0
-    return label
+  private let imageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFill
+    imageView.clipsToBounds = true
+    return imageView
   }()
+  private var imageDownloadTask: URLSessionDataTask?
+  
+  var imageURL: URL? {
+    didSet {
+      if let imageURL = imageURL {
+        imageDownloadTask = imageView.setGifFromURL(imageURL)
+      } else {
+        imageDownloadTask?.cancel()
+        imageDownloadTask = nil
+        imageView.image = nil
+      }
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -24,8 +37,8 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
     layer.borderColor = UIColor.black.cgColor
     layer.borderWidth = 1
     
-    addSubview(titleLabel)
-    titleLabel.pinEdgesToParent()
+    addSubview(imageView)
+    imageView.pinEdgesToParent()
   }
   
   required init?(coder: NSCoder) {

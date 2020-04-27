@@ -65,7 +65,8 @@ extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlo
     guard let image = dataSource?.gifSearchView(self, imageAtIndex: indexPath.item) else {
       return cell
     }
-    cell.titleLabel.text = image.url.absoluteString
+
+    cell.imageURL = image.url
     
     return cell
   }
