@@ -9,10 +9,9 @@
 import UIKit
 
 class GIFSearchViewController: UIViewController {
-
-    private let gifSearchView = GIFSearchView()
+  private let gifSearchView = GIFSearchView()
     
-    override func loadView() {
-        view = gifSearchView
-    }
+  override func loadView() {
+    view = gifSearchView
+  }
 }
