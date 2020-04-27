@@ -59,5 +59,4 @@ extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlo
     let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
     return CGSize(width: itemSize, height: itemSize)
   }
-
 }

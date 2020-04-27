@@ -105,16 +105,12 @@
 		50CF98D3245682CA00188715 /* GIF Search */ = {
 			isa = PBXGroup;
 			children = (
-				50CF98D4245682CA00188715 /* AppDelegate.swift */,
-				50CF98D6245682CA00188715 /* SceneDelegate.swift */,
-				50D709DF24568B8C00BA2D73 /* GIFSearchViewController.swift */,
-				50D709E124568BCF00BA2D73 /* GIFSearchView.swift */,
-				50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */,
-				50CF98DA245682CA00188715 /* Main.storyboard */,
-				50CF98DD245682CC00188715 /* Assets.xcassets */,
-				50CF98DF245682CC00188715 /* LaunchScreen.storyboard */,
+				50D709E92456940100BA2D73 /* Views */,
+				50D709E8245693F300BA2D73 /* View Controllers */,
+				50D709E7245693E800BA2D73 /* Networking */,
+				50D709EC2456942400BA2D73 /* Utility */,
+				50D709EB2456941800BA2D73 /* Boilerplate Stuff */,
 				50CF98E2245682CC00188715 /* Info.plist */,
-				50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */,
 			);
 			path = "GIF Search";
 			sourceTree = "<group>";
@@ -135,6 +131,50 @@
 				50CF98F8245682CC00188715 /* Info.plist */,
 			);
 			path = "GIF SearchUITests";
+			sourceTree = "<group>";
+		};
+		50D709E7245693E800BA2D73 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		50D709E8245693F300BA2D73 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50D709DF24568B8C00BA2D73 /* GIFSearchViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		50D709E92456940100BA2D73 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				50D709E124568BCF00BA2D73 /* GIFSearchView.swift */,
+				50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		50D709EB2456941800BA2D73 /* Boilerplate Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				50CF98D4245682CA00188715 /* AppDelegate.swift */,
+				50CF98D6245682CA00188715 /* SceneDelegate.swift */,
+				50CF98DA245682CA00188715 /* Main.storyboard */,
+				50CF98DD245682CC00188715 /* Assets.xcassets */,
+				50CF98DF245682CC00188715 /* LaunchScreen.storyboard */,
+			);
+			path = "Boilerplate Stuff";
+			sourceTree = "<group>";
+		};
+		50D709EC2456942400BA2D73 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
