@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D4245682CA00188715 /* AppDelegate.swift */; };
 		50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D6245682CA00188715 /* SceneDelegate.swift */; };
-		50CF98D9245682CA00188715 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D8245682CA00188715 /* ViewController.swift */; };
 		50CF98DC245682CA00188715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CF98DA245682CA00188715 /* Main.storyboard */; };
 		50CF98DE245682CC00188715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CF98DD245682CC00188715 /* Assets.xcassets */; };
 		50CF98E1245682CC00188715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CF98DF245682CC00188715 /* LaunchScreen.storyboard */; };
 		50CF98EC245682CC00188715 /* GIF_SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98EB245682CC00188715 /* GIF_SearchTests.swift */; };
 		50CF98F7245682CC00188715 /* GIF_SearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98F6245682CC00188715 /* GIF_SearchUITests.swift */; };
+		50D709E024568B8C00BA2D73 /* GIFSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709DF24568B8C00BA2D73 /* GIFSearchViewController.swift */; };
+		50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E124568BCF00BA2D73 /* GIFSearchView.swift */; };
+		50D709E424568D8300BA2D73 /* GIFImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */; };
+		50D709E624568DEF00BA2D73 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,6 @@
 		50CF98D1245682CA00188715 /* GIF Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GIF Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CF98D4245682CA00188715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CF98D6245682CA00188715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		50CF98D8245682CA00188715 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50CF98DB245682CA00188715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50CF98DD245682CC00188715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CF98E0245682CC00188715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		50CF98F2245682CC00188715 /* GIF SearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GIF SearchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CF98F6245682CC00188715 /* GIF_SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF_SearchUITests.swift; sourceTree = "<group>"; };
 		50CF98F8245682CC00188715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50D709DF24568B8C00BA2D73 /* GIFSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchViewController.swift; sourceTree = "<group>"; };
+		50D709E124568BCF00BA2D73 /* GIFSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchView.swift; sourceTree = "<group>"; };
+		50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +107,14 @@
 			children = (
 				50CF98D4245682CA00188715 /* AppDelegate.swift */,
 				50CF98D6245682CA00188715 /* SceneDelegate.swift */,
-				50CF98D8245682CA00188715 /* ViewController.swift */,
+				50D709DF24568B8C00BA2D73 /* GIFSearchViewController.swift */,
+				50D709E124568BCF00BA2D73 /* GIFSearchView.swift */,
+				50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */,
 				50CF98DA245682CA00188715 /* Main.storyboard */,
 				50CF98DD245682CC00188715 /* Assets.xcassets */,
 				50CF98DF245682CC00188715 /* LaunchScreen.storyboard */,
 				50CF98E2245682CC00188715 /* Info.plist */,
+				50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */,
 			);
 			path = "GIF Search";
 			sourceTree = "<group>";
@@ -259,9 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50CF98D9245682CA00188715 /* ViewController.swift in Sources */,
+				50D709E624568DEF00BA2D73 /* UIView+Extensions.swift in Sources */,
 				50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */,
+				50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */,
 				50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */,
+				50D709E024568B8C00BA2D73 /* GIFSearchViewController.swift in Sources */,
+				50D709E424568D8300BA2D73 /* GIFImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
