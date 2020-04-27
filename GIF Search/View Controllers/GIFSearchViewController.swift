@@ -19,15 +19,36 @@ class GIFSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    gifSearchView.dataSource = self
-    gifSearchView.reloadData()
-    
-    interactor.fetchGIFs(with: "trains") { [weak self] _ in
+    interactor.updateBlock = { [weak self] _ in
       DispatchQueue.main.async {
         guard let self = self else { return }
         self.gifSearchView.reloadData()
       }
     }
+    
+    gifSearchView.delegate = self
+    gifSearchView.dataSource = self
+    gifSearchView.reloadData()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    gifSearchView.activateSearchField()
+  }
+}
+
+extension GIFSearchViewController: GIFSearchViewDelegate {
+  func gifSearchView(_ gifSearchView: GIFSearchView, didUpdateQuery query: String?) {
+    interactor.reset()
+  }
+
+  func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?) {
+    guard let query = query else {
+      interactor.reset()
+      return
+    }
+    interactor.fetchGIFs(with: query)
   }
 }
 

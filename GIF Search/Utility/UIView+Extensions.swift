@@ -22,26 +22,38 @@ extension UIView {
     ])
   }
   
-  func pinEdgesToParent(including edges: [UIRectEdge] = [.left, .right, .top, .bottom]) {
+  func pinEdgesToParent(excluding excludedEdges: UIRectEdge) {
+    let edges = ([.left, .right, .top, .bottom] as [UIRectEdge]).filter {
+      !excludedEdges.contains($0)
+    }
+    pinEdgesToParent(including: UIRectEdge(edges))
+  }
+  
+  func pinEdgesToParent(including edges: UIRectEdge = [.left, .right, .top, .bottom]) {
     guard let superview = superview else {
       print("pinEdgesToParent failed - no superview!")
       return
     }
     
     translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate(edges.map {
-      switch $0 {
-      case .left:
-        return leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor)
-      case .right:
-        return rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor)
-      case .top:
-        return topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor)
-      case .bottom:
-        return bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)
-      default:
-        fatalError("Unsupported UIRectEdge: \($0)")
-      }
-    })
+    
+    var constraints: [NSLayoutConstraint] = []
+    if edges.contains(.left) {
+      constraints.append(leftAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leftAnchor))
+    }
+    
+    if edges.contains(.right) {
+      constraints.append(rightAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.rightAnchor))
+    }
+    
+    if edges.contains(.top) {
+      constraints.append(topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor))
+    }
+    
+    if edges.contains(.bottom) {
+      constraints.append(bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor))
+    }
+    
+    NSLayoutConstraint.activate(constraints)
   }
 }

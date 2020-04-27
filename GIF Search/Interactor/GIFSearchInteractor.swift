@@ -9,6 +9,8 @@
 import Foundation
 
 class GIFSearchInteractor {
+  var updateBlock: ((Error?) -> Void)?
+  
   private let gifSearchClient: GIFSearchClient
   
   private(set) var images: [GIFImage] = []
@@ -17,15 +19,20 @@ class GIFSearchInteractor {
     self.gifSearchClient = gifSearchClient
   }
   
-  func fetchGIFs(with query: String, callback: @escaping ((Result<Void, Error>) -> Void)) {
+  func reset() {
+    self.images = []
+    self.updateBlock?(nil)
+  }
+  
+  func fetchGIFs(with query: String) {
     gifSearchClient.fetchGIFImages(with: query, limit: 100) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let images):
         self.images = images
-        callback(.success(Void()))
+        self.updateBlock?(nil)
       case .failure(let error):
-        callback(.failure(error))
+        self.updateBlock?(error)
       }
     }
   }
