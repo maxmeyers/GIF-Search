@@ -12,7 +12,8 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
   let titleLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 24)
+    label.font = UIFont.systemFont(ofSize: 11)
+    label.numberOfLines = 0
     return label
   }()
   
@@ -24,7 +25,7 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
     layer.borderWidth = 1
     
     addSubview(titleLabel)
-    titleLabel.centerInParent()
+    titleLabel.pinEdgesToParent()
   }
   
   required init?(coder: NSCoder) {

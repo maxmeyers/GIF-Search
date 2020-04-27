@@ -28,13 +28,14 @@ class GiphyGIFSearchClient: GIFSearchClient {
   
   func fetchGIFImages(
     with query: String,
+    limit: UInt,
     callback: @escaping ((Result<[GIFImage], Error>) -> Void)
   ) {
     var urlComponents = URLComponents(string: GiphyGIFSearchClient.searchURLString)!
     urlComponents.queryItems = [
       "api_key": GiphyGIFSearchClient.apiKey,
       "q": query,
-      "limit": "100"
+      "limit": "\(limit)"
     ].map { URLQueryItem(name: $0.key, value: $0.value) }
     
     let task = URLSession.shared.dataTask(

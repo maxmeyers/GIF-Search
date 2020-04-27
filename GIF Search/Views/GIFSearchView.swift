@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol GIFSearchViewDataSource: AnyObject {
+  func gifSearchViewNumberOfImages(_ gifSearchView: GIFSearchView) -> Int
+  func gifSearchView(_ gifSearchView: GIFSearchView, imageAtIndex index: Int) -> GIFImage
+}
+
 class GIFSearchView: UIView {
+  weak var dataSource: GIFSearchViewDataSource?
+  
   private static let ImageCellReuseIdentifier = "ImageCell"
 
   private let layout = UICollectionViewFlowLayout()
@@ -23,6 +30,10 @@ class GIFSearchView: UIView {
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func reloadData() {
+    collectionView.reloadData()
   }
   
   private func configureCollectionView() {
@@ -42,7 +53,7 @@ class GIFSearchView: UIView {
 
 extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return dataSource?.gifSearchViewNumberOfImages(self) ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,7 +62,10 @@ extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlo
       for: indexPath
     ) as! GIFImageCollectionViewCell
     
-    cell.titleLabel.text = "Hello world \(indexPath.item)"
+    guard let image = dataSource?.gifSearchView(self, imageAtIndex: indexPath.item) else {
+      return cell
+    }
+    cell.titleLabel.text = image.url.absoluteString
     
     return cell
   }

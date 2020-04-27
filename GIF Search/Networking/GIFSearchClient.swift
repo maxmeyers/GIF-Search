@@ -7,6 +7,10 @@
 //
 
 protocol GIFSearchClient {
-  func fetchGIFImages(with query: String, callback: @escaping ((Result<[GIFImage], Error>) -> Void))
+  func fetchGIFImages(
+    with query: String,
+    limit: UInt,
+    callback: @escaping ((Result<[GIFImage], Error>) -> Void)
+  )
 }
 

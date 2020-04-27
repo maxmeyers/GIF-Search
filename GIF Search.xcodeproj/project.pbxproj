@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5011F65224569CFB00B8AB2F /* GIFSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5011F65124569CFB00B8AB2F /* GIFSearchInteractor.swift */; };
 		50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D4245682CA00188715 /* AppDelegate.swift */; };
 		50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CF98D6245682CA00188715 /* SceneDelegate.swift */; };
 		50CF98DC245682CA00188715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CF98DA245682CA00188715 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5011F65124569CFB00B8AB2F /* GIFSearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchInteractor.swift; sourceTree = "<group>"; };
 		50CF98D1245682CA00188715 /* GIF Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GIF Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CF98D4245682CA00188715 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CF98D6245682CA00188715 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5011F65024569CE600B8AB2F /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				5011F65124569CFB00B8AB2F /* GIFSearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		50CF98C8245682CA00188715 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		50CF98D3245682CA00188715 /* GIF Search */ = {
 			isa = PBXGroup;
 			children = (
+				5011F65024569CE600B8AB2F /* Interactor */,
 				50D709E92456940100BA2D73 /* Views */,
 				50D709E8245693F300BA2D73 /* View Controllers */,
 				50D709E7245693E800BA2D73 /* Networking */,
@@ -330,6 +341,7 @@
 				50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */,
 				50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */,
 				50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */,
+				5011F65224569CFB00B8AB2F /* GIFSearchInteractor.swift in Sources */,
 				50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */,
 				50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */,
 				50D709E024568B8C00BA2D73 /* GIFSearchViewController.swift in Sources */,
