@@ -18,6 +18,9 @@
 		50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E124568BCF00BA2D73 /* GIFSearchView.swift */; };
 		50D709E424568D8300BA2D73 /* GIFImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */; };
 		50D709E624568DEF00BA2D73 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */; };
+		50D709EE2456947500BA2D73 /* GIFSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709ED2456947500BA2D73 /* GIFSearchClient.swift */; };
+		50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F0245694D600BA2D73 /* GIFImage.swift */; };
+		50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		50D709E124568BCF00BA2D73 /* GIFSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchView.swift; sourceTree = "<group>"; };
 		50D709E324568D8300BA2D73 /* GIFImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		50D709ED2456947500BA2D73 /* GIFSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchClient.swift; sourceTree = "<group>"; };
+		50D709F0245694D600BA2D73 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
+		50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyGIFSearchClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 				50D709E92456940100BA2D73 /* Views */,
 				50D709E8245693F300BA2D73 /* View Controllers */,
 				50D709E7245693E800BA2D73 /* Networking */,
+				50D709EF2456948800BA2D73 /* Models */,
 				50D709EC2456942400BA2D73 /* Utility */,
 				50D709EB2456941800BA2D73 /* Boilerplate Stuff */,
 				50CF98E2245682CC00188715 /* Info.plist */,
@@ -136,6 +143,8 @@
 		50D709E7245693E800BA2D73 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				50D709ED2456947500BA2D73 /* GIFSearchClient.swift */,
+				50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -175,6 +184,14 @@
 				50D709E524568DEF00BA2D73 /* UIView+Extensions.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		50D709EF2456948800BA2D73 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50D709F0245694D600BA2D73 /* GIFImage.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,10 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D709EE2456947500BA2D73 /* GIFSearchClient.swift in Sources */,
 				50D709E624568DEF00BA2D73 /* UIView+Extensions.swift in Sources */,
+				50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */,
 				50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */,
 				50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */,
 				50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */,
+				50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */,
 				50D709E024568B8C00BA2D73 /* GIFSearchViewController.swift in Sources */,
 				50D709E424568D8300BA2D73 /* GIFImageCollectionViewCell.swift in Sources */,
 			);
