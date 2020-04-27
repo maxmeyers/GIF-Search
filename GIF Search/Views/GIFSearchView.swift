@@ -17,6 +17,7 @@ class GIFSearchView: UIView {
   init() {
     super.init(frame: .zero)
     
+    backgroundColor = .white
     configureCollectionView()
   }
   
