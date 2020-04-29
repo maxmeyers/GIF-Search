@@ -17,6 +17,7 @@ protocol GIFSearchViewDataSource: AnyObject {
 protocol GIFSearchViewDelegate: AnyObject {
   func gifSearchView(_ gifSearchView: GIFSearchView, didUpdateQuery query: String?)
   func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?)
+  func gifSearchView(_ gifSearchView: GIFSearchView, didSelectImageAtIndex index: Int)
 }
 
 class GIFSearchView: UIView {
@@ -52,6 +53,13 @@ class GIFSearchView: UIView {
   
   func reloadData() {
     collectionView.reloadData()
+  }
+  
+  func imageDataAtIndex(_ index: Int) -> Data? {
+    guard let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? GIFImageCollectionViewCell else {
+      return nil
+    }
+    return cell.imageData
   }
   
   private func configureSearchBar() {
@@ -117,5 +125,9 @@ extension GIFSearchView: UICollectionViewDataSource, CHTCollectionViewDelegateWa
     }
 
     return CGSize(width: image.size.width, height: image.size.height)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    delegate?.gifSearchView(self, didSelectImageAtIndex: indexPath.item)
   }
 }

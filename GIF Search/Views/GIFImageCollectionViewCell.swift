@@ -30,6 +30,12 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
     }
   }
   
+  var imageData: Data? {
+    get {
+      return imageView.gifImage?.imageData
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     

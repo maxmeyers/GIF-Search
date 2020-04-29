@@ -24,6 +24,11 @@
 		50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F0245694D600BA2D73 /* GIFImage.swift */; };
 		50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */; };
 		50F2568024592959009B2729 /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 50F2567F24592959009B2729 /* CHTCollectionViewWaterfallLayout */; };
+		50F2568224592D9E009B2729 /* ActionSheetOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F2568124592D9E009B2729 /* ActionSheetOption.swift */; };
+		50F2568524593302009B2729 /* PhotoLibraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F2568424593302009B2729 /* PhotoLibraryClient.swift */; };
+		50F256872459332A009B2729 /* DevicePhotoLibraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F256862459332A009B2729 /* DevicePhotoLibraryClient.swift */; };
+		50F25689245939AB009B2729 /* ClipboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F25688245939AB009B2729 /* ClipboardClient.swift */; };
+		50F2568B245939B5009B2729 /* DeviceClipboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F2568A245939B5009B2729 /* DeviceClipboardClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		50D709ED2456947500BA2D73 /* GIFSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFSearchClient.swift; sourceTree = "<group>"; };
 		50D709F0245694D600BA2D73 /* GIFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImage.swift; sourceTree = "<group>"; };
 		50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyGIFSearchClient.swift; sourceTree = "<group>"; };
+		50F2568124592D9E009B2729 /* ActionSheetOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetOption.swift; sourceTree = "<group>"; };
+		50F2568424593302009B2729 /* PhotoLibraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryClient.swift; sourceTree = "<group>"; };
+		50F256862459332A009B2729 /* DevicePhotoLibraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePhotoLibraryClient.swift; sourceTree = "<group>"; };
+		50F25688245939AB009B2729 /* ClipboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardClient.swift; sourceTree = "<group>"; };
+		50F2568A245939B5009B2729 /* DeviceClipboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceClipboardClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +135,7 @@
 		50CF98D3245682CA00188715 /* GIF Search */ = {
 			isa = PBXGroup;
 			children = (
+				50F25683245932EC009B2729 /* IO */,
 				5011F65024569CE600B8AB2F /* Interactor */,
 				50D709E92456940100BA2D73 /* Views */,
 				50D709E8245693F300BA2D73 /* View Controllers */,
@@ -205,8 +216,20 @@
 			isa = PBXGroup;
 			children = (
 				50D709F0245694D600BA2D73 /* GIFImage.swift */,
+				50F2568124592D9E009B2729 /* ActionSheetOption.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		50F25683245932EC009B2729 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				50F2568424593302009B2729 /* PhotoLibraryClient.swift */,
+				50F256862459332A009B2729 /* DevicePhotoLibraryClient.swift */,
+				50F25688245939AB009B2729 /* ClipboardClient.swift */,
+				50F2568A245939B5009B2729 /* DeviceClipboardClient.swift */,
+			);
+			path = IO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,10 +376,15 @@
 				50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */,
 				50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */,
 				50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */,
+				50F2568524593302009B2729 /* PhotoLibraryClient.swift in Sources */,
+				50F2568B245939B5009B2729 /* DeviceClipboardClient.swift in Sources */,
 				5011F65224569CFB00B8AB2F /* GIFSearchInteractor.swift in Sources */,
 				50CF98D7245682CA00188715 /* SceneDelegate.swift in Sources */,
 				50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */,
+				50F25689245939AB009B2729 /* ClipboardClient.swift in Sources */,
 				50D709E024568B8C00BA2D73 /* GIFSearchViewController.swift in Sources */,
+				50F2568224592D9E009B2729 /* ActionSheetOption.swift in Sources */,
+				50F256872459332A009B2729 /* DevicePhotoLibraryClient.swift in Sources */,
 				50D709E424568D8300BA2D73 /* GIFImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
