@@ -44,7 +44,7 @@ class GIFSearchView: UIView {
   init() {
     super.init(frame: .zero)
     
-    backgroundColor = .white
+    backgroundColor = .systemBackground
     configureSearchBar()
     configureCollectionView()
   }
@@ -85,7 +85,7 @@ class GIFSearchView: UIView {
     collectionView.pinEdgesToParent(excluding: .top)
     collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
 
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = .systemBackground
     collectionView.register(
       GIFImageCollectionViewCell.self,
       forCellWithReuseIdentifier: GIFSearchView.ImageCellReuseIdentifier

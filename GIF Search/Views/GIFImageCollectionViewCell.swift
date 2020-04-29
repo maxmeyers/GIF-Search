@@ -39,7 +39,7 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .white
+    backgroundColor = .systemBackground
     
     addSubview(imageView)
     imageView.pinEdgesToParent()
