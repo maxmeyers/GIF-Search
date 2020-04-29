@@ -62,6 +62,11 @@ extension GIFSearchViewController: GIFSearchInteractorDelegate {
     alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     present(alertController, animated: true)
   }
+  
+  func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data) {
+    let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+    present(activityViewController, animated: true)
+  }
 }
 
 extension GIFSearchViewController: GIFSearchViewDelegate {
@@ -81,10 +86,6 @@ extension GIFSearchViewController: GIFSearchViewDelegate {
     interactor.gifSelected(at: index)
   }
   
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data) {
-    let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
-    present(activityViewController, animated: true)
-  }
 }
 
 extension GIFSearchViewController: GIFSearchViewDataSource {
