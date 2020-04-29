@@ -9,13 +9,22 @@
 import UIKit
 
 class GIFSearchViewController: UIViewController {
-  private let interactor = GIFSearchInteractor(
-    gifSearchClient: GiphyGIFSearchClient(),
-    photoLibraryClient: DevicePhotoLibraryClient(),
-    clipboardClient: DeviceClipboardClient()
-  )
+  private let interactor: GIFSearchInteractor
   private let gifSearchView = GIFSearchView()
   private var searchDebounceTimer: Timer?
+  
+  required init?(coder: NSCoder) {
+    guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GiphyAPIKey") as? String else {
+      fatalError("GiphyAPIKey must be set in Info.plist")
+    }
+    
+    interactor = GIFSearchInteractor(
+      gifSearchClient: GiphyGIFSearchClient(apiKey: apiKey),
+      photoLibraryClient: DevicePhotoLibraryClient(),
+      clipboardClient: DeviceClipboardClient()
+    )
+    super.init(coder: coder)
+  }
   
   override func loadView() {
     view = gifSearchView

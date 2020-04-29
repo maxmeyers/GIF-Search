@@ -46,10 +46,14 @@ private struct GiphyGIFImage: Decodable {
 }
 
 class GiphyGIFSearchClient: GIFSearchClient {
-  private static let apiKey: String = "ZsUpUm2L6cVbvei347EQNp7HrROjbOdc"
   private static let searchURLString = "https://api.giphy.com/v1/gifs/search"
   
+  private let apiKey: String
   private let jsonDecoder = JSONDecoder()
+  
+  init(apiKey: String) {
+    self.apiKey = apiKey;
+  }
   
   func fetchGIFImages(
     with query: String,
@@ -59,7 +63,7 @@ class GiphyGIFSearchClient: GIFSearchClient {
   ) {
     var urlComponents = URLComponents(string: GiphyGIFSearchClient.searchURLString)!
     urlComponents.queryItems = [
-      "api_key": GiphyGIFSearchClient.apiKey,
+      "api_key": apiKey,
       "q": query,
       "limit": "\(limit)",
       "offset": "\(offset)",
