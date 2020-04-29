@@ -14,8 +14,11 @@ class GIFSearchViewController: UIViewController {
   private var searchDebounceTimer: Timer?
   
   required init?(coder: NSCoder) {
-    guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GiphyAPIKey") as? String else {
-      fatalError("GiphyAPIKey must be set in Info.plist")
+    guard
+      let apiKey = Bundle.main.object(forInfoDictionaryKey: "GiphyAPIKey") as? String,
+      apiKey.count > 0
+      else {
+        fatalError("GiphyAPIKey must be set in Info.plist")
     }
     
     interactor = GIFSearchInteractor(
