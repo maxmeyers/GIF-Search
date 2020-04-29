@@ -94,16 +94,17 @@ extension GIFSearchViewController: GIFSearchInteractorDelegate {
 
 extension GIFSearchViewController: GIFSearchViewDelegate {
   func gifSearchView(_ gifSearchView: GIFSearchView, didUpdateQuery query: String?) {
-    interactor.reset()
     searchDebounceTimer?.invalidate()
-    searchDebounceTimer = nil
 
-    if let query = query {
-      searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] _ in
-        guard let self = self else { return }
-        self.interactor.fetchGIFs(with: query)
-      })
+    guard let query = query, query.count > 0 else {
+      interactor.reset()
+      return
     }
+    
+    searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] _ in
+      guard let self = self else { return }
+      self.interactor.fetchGIFs(with: query)
+    })
   }
 
   func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?) {
