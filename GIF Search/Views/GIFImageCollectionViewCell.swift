@@ -34,8 +34,6 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
     super.init(frame: frame)
     
     backgroundColor = .white
-    layer.borderColor = UIColor.black.cgColor
-    layer.borderWidth = 1
     
     addSubview(imageView)
     imageView.pinEdgesToParent()

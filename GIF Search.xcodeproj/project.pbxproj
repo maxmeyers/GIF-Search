@@ -23,6 +23,7 @@
 		50D709EE2456947500BA2D73 /* GIFSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709ED2456947500BA2D73 /* GIFSearchClient.swift */; };
 		50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F0245694D600BA2D73 /* GIFImage.swift */; };
 		50D709F32456959700BA2D73 /* GiphyGIFSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D709F22456959700BA2D73 /* GiphyGIFSearchClient.swift */; };
+		50F2568024592959009B2729 /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 50F2567F24592959009B2729 /* CHTCollectionViewWaterfallLayout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F2568024592959009B2729 /* CHTCollectionViewWaterfallLayout in Frameworks */,
 				5011F6552456A30C00B8AB2F /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +227,7 @@
 			name = "GIF Search";
 			packageProductDependencies = (
 				5011F6542456A30C00B8AB2F /* SwiftyGif */,
+				50F2567F24592959009B2729 /* CHTCollectionViewWaterfallLayout */,
 			);
 			productName = "GIF Search";
 			productReference = 50CF98D1245682CA00188715 /* GIF Search.app */;
@@ -300,6 +303,7 @@
 			mainGroup = 50CF98C8245682CA00188715;
 			packageReferences = (
 				5011F6532456A30C00B8AB2F /* XCRemoteSwiftPackageReference "SwiftyGif" */,
+				50F2567E24592959009B2729 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
 			);
 			productRefGroup = 50CF98D2245682CA00188715 /* Products */;
 			projectDirPath = "";
@@ -686,6 +690,14 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		50F2567E24592959009B2729 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -693,6 +705,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5011F6532456A30C00B8AB2F /* XCRemoteSwiftPackageReference "SwiftyGif" */;
 			productName = SwiftyGif;
+		};
+		50F2567F24592959009B2729 /* CHTCollectionViewWaterfallLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50F2567E24592959009B2729 /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
+			productName = CHTCollectionViewWaterfallLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

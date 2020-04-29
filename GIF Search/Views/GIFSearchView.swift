@@ -6,6 +6,7 @@
 //  Copyright © 2020 Max. All rights reserved.
 //
 
+import CHTCollectionViewWaterfallLayout
 import UIKit
 
 protocol GIFSearchViewDataSource: AnyObject {
@@ -30,7 +31,7 @@ class GIFSearchView: UIView {
     return searchBar
   }()
   
-  private let layout = UICollectionViewFlowLayout()
+  private let layout = CHTCollectionViewWaterfallLayout()
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
   
   init() {
@@ -90,7 +91,7 @@ extension GIFSearchView: UISearchBarDelegate, UITextFieldDelegate {
   }
 }
 
-extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GIFSearchView: UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return dataSource?.gifSearchViewNumberOfImages(self) ?? 0
   }
@@ -111,7 +112,10 @@ extension GIFSearchView: UICollectionViewDataSource, UICollectionViewDelegateFlo
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
-    return CGSize(width: itemSize, height: itemSize)
+    guard let image = dataSource?.gifSearchView(self, imageAtIndex: indexPath.item) else {
+      return .zero
+    }
+
+    return CGSize(width: image.size.width, height: image.size.height)
   }
 }

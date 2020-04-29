@@ -10,4 +10,5 @@ import Foundation
 
 struct GIFImage {
   let url: URL
+  let size: (width: Int, height: Int)
 }
