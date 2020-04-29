@@ -14,11 +14,18 @@ private enum GiphyResponseError: Error {
 
 private struct GiphySearchResponse: Decodable {
   let data: [GiphyGIF]
+  let pagination: GiphyPagination
 }
 
 private struct GiphyGIF: Decodable {
   let url: String
   let images: GiphyGIFImages
+}
+
+private struct GiphyPagination: Decodable {
+  let offset: Int
+  let total_count: Int
+  let count: Int
 }
 
 private struct GiphyGIFImages: Decodable {
@@ -47,13 +54,15 @@ class GiphyGIFSearchClient: GIFSearchClient {
   func fetchGIFImages(
     with query: String,
     limit: UInt,
-    callback: @escaping ((Result<[GIFImage], Error>) -> Void)
+    offset: UInt,
+    callback: @escaping ((Result<([GIFImage], Pagination), Error>) -> Void)
   ) {
     var urlComponents = URLComponents(string: GiphyGIFSearchClient.searchURLString)!
     urlComponents.queryItems = [
       "api_key": GiphyGIFSearchClient.apiKey,
       "q": query,
-      "limit": "\(limit)"
+      "limit": "\(limit)",
+      "offset": "\(offset)",
     ].map { URLQueryItem(name: $0.key, value: $0.value) }
     
     let task = URLSession.shared.dataTask(
@@ -82,7 +91,13 @@ class GiphyGIFSearchClient: GIFSearchClient {
           
           return GIFImage(url: url, size: size)
         }
-        callback(.success(images))
+        let giphyPagination = decodedResponse.pagination
+        let pagination = Pagination(
+          offset: giphyPagination.offset,
+          totalCount: giphyPagination.total_count,
+          count: giphyPagination.count
+        )
+        callback(.success((images, pagination)))
       } catch let jsonError {
         callback(.failure(jsonError))
       }

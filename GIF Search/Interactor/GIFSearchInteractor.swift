@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 protocol GIFSearchInteractorDelegate: AnyObject {
-  func gifSearchInteractorDidUpdateImages(_ interactor: GIFSearchInteractor)
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, failedLoadingImagesWithError error: Error)
-  
+  func gifSearchInteractorDidResetImages(_ interactor: GIFSearchInteractor)
+  func gifSearchInteractor(_ interactor: GIFSearchInteractor, didInsertImagesAtIndices indices: [Int])
+
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, displayActionSheetWithOptions options: [ActionOption], forImageAtIndex index: Int)
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data)
 }
@@ -26,9 +26,13 @@ class GIFSearchInteractor {
   
   private(set) var images: [GIFImage] = [] {
     didSet {
-      self.delegate?.gifSearchInteractorDidUpdateImages(self)
+      if images.isEmpty {
+        self.delegate?.gifSearchInteractorDidResetImages(self)
+      }
     }
   }
+  
+  private var currentResult: (query: String, pagination: Pagination)?
   
   init(gifSearchClient: GIFSearchClient, photoLibraryClient: PhotoLibraryClient, clipboardClient: ClipboardClient) {
     self.gifSearchClient = gifSearchClient
@@ -41,14 +45,20 @@ class GIFSearchInteractor {
   }
   
   func fetchGIFs(with query: String) {
-    gifSearchClient.fetchGIFImages(with: query, limit: 100) { [weak self] result in
-      guard let self = self else { return }
-      switch result {
-      case .success(let images):
-        self.images = images
-      case .failure(let error):
-        self.delegate?.gifSearchInteractor(self, failedLoadingImagesWithError: error)
-      }
+    images = []
+    loadGIFs(with: query, offset: 0)
+  }
+  
+  func fetchMoreGIFsIfNecessary() {
+    guard let currentResult = currentResult else {
+      return
+    }
+    
+    let newOffset = currentResult.pagination.offset + currentResult.pagination.count
+    if newOffset < currentResult.pagination.totalCount {
+      loadGIFs(with: currentResult.query, offset: newOffset)
+    } else {
+      print("Reached end of GIFs for \(currentResult.query)")
     }
   }
   
@@ -69,4 +79,20 @@ class GIFSearchInteractor {
     }
   }
   
+  private func loadGIFs(with query: String, offset: Int) {
+    gifSearchClient.fetchGIFImages(with: query, limit: 25, offset: UInt(offset)) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success((let images, let pagination)):
+        let previousLength = self.images.count
+        self.images.append(contentsOf: images)
+        self.currentResult = (query, pagination)
+        
+        let range = Array(previousLength..<self.images.count)
+        self.delegate?.gifSearchInteractor(self, didInsertImagesAtIndices: range)
+      case .failure(let error):
+        print("Error loading images: \(error.localizedDescription)")
+      }
+    }
+  }
 }

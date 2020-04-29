@@ -57,16 +57,15 @@ class GIFSearchViewController: UIViewController {
 }
 
 extension GIFSearchViewController: GIFSearchInteractorDelegate {
-  func gifSearchInteractorDidUpdateImages(_ interactor: GIFSearchInteractor) {
+  func gifSearchInteractorDidResetImages(_ interactor: GIFSearchInteractor) {
     DispatchQueue.main.async {
       self.gifSearchView.reloadData()
     }
   }
   
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, failedLoadingImagesWithError error: Error) {
-    // TODO: Show an error
+  func gifSearchInteractor(_ interactor: GIFSearchInteractor, didInsertImagesAtIndices indices: [Int]) {
     DispatchQueue.main.async {
-      self.gifSearchView.reloadData()
+      self.gifSearchView.insertItems(at: indices)
     }
   }
   
@@ -108,6 +107,8 @@ extension GIFSearchViewController: GIFSearchViewDelegate {
   }
 
   func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?) {
+    searchDebounceTimer?.invalidate()
+
     guard let query = query else {
       interactor.reset()
       return
@@ -119,6 +120,9 @@ extension GIFSearchViewController: GIFSearchViewDelegate {
     interactor.gifSelected(at: index)
   }
   
+  func gifSearchViewDidDisplayEndOfList(_ gifSearchView: GIFSearchView) {
+    interactor.fetchMoreGIFsIfNecessary()
+  }
 }
 
 extension GIFSearchViewController: GIFSearchViewDataSource {

@@ -29,6 +29,7 @@
 		50F256872459332A009B2729 /* DevicePhotoLibraryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F256862459332A009B2729 /* DevicePhotoLibraryClient.swift */; };
 		50F25689245939AB009B2729 /* ClipboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F25688245939AB009B2729 /* ClipboardClient.swift */; };
 		50F2568B245939B5009B2729 /* DeviceClipboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F2568A245939B5009B2729 /* DeviceClipboardClient.swift */; };
+		50F2570824594CF2009B2729 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F2570724594CF2009B2729 /* Pagination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		50F256862459332A009B2729 /* DevicePhotoLibraryClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePhotoLibraryClient.swift; sourceTree = "<group>"; };
 		50F25688245939AB009B2729 /* ClipboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardClient.swift; sourceTree = "<group>"; };
 		50F2568A245939B5009B2729 /* DeviceClipboardClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceClipboardClient.swift; sourceTree = "<group>"; };
+		50F2570724594CF2009B2729 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 			children = (
 				50D709F0245694D600BA2D73 /* GIFImage.swift */,
 				50F2568124592D9E009B2729 /* ActionSheetOption.swift */,
+				50F2570724594CF2009B2729 /* Pagination.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				50D709F1245694D600BA2D73 /* GIFImage.swift in Sources */,
 				50CF98D5245682CA00188715 /* AppDelegate.swift in Sources */,
 				50D709E224568BCF00BA2D73 /* GIFSearchView.swift in Sources */,
+				50F2570824594CF2009B2729 /* Pagination.swift in Sources */,
 				50F2568524593302009B2729 /* PhotoLibraryClient.swift in Sources */,
 				50F2568B245939B5009B2729 /* DeviceClipboardClient.swift in Sources */,
 				5011F65224569CFB00B8AB2F /* GIFSearchInteractor.swift in Sources */,
