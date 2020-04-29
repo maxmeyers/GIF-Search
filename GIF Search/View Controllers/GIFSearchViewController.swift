@@ -31,10 +31,28 @@ class GIFSearchViewController: UIViewController {
     gifSearchView.reloadData()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    updateColumnCount(withSize: view.bounds.size)
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     gifSearchView.activateSearchField()
+  }
+  
+  override func viewWillTransition(
+    to size: CGSize,
+    with coordinator: UIViewControllerTransitionCoordinator
+  ) {
+    updateColumnCount(withSize: size)
+  }
+  
+  private func updateColumnCount(withSize size: CGSize) {
+    guard size.width > 0 else { return }
+    gifSearchView.numberOfColumns = Int(round(size.width / 200))
   }
 }
 
@@ -53,7 +71,11 @@ extension GIFSearchViewController: GIFSearchInteractorDelegate {
   }
   
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, displayActionSheetWithOptions options: [ActionOption], forImageAtIndex index: Int) {
+    guard let sourceView = gifSearchView.viewForImageAtIndex(index) else { return }
+    
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alertController.popoverPresentationController?.sourceView = sourceView
+
     for option in options {
       alertController.addAction(UIAlertAction(title: option.title, style: .default, handler: { [weak self] _ in
         guard let self = self, let imageData = self.gifSearchView.imageDataAtIndex(index) else { return }

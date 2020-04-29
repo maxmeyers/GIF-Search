@@ -24,6 +24,12 @@ class GIFSearchView: UIView {
   weak var dataSource: GIFSearchViewDataSource?
   weak var delegate: GIFSearchViewDelegate?
   
+  var numberOfColumns: Int = 2 {
+    didSet {
+      layout.columnCount = numberOfColumns
+    }
+  }
+  
   private static let ImageCellReuseIdentifier = "ImageCell"
 
   private let searchBar: UISearchBar = {
@@ -60,6 +66,10 @@ class GIFSearchView: UIView {
       return nil
     }
     return cell.imageData
+  }
+  
+  func viewForImageAtIndex(_ index: Int) -> UIView? {
+    return collectionView.cellForItem(at: IndexPath(item: index, section: 0))
   }
   
   private func configureSearchBar() {
