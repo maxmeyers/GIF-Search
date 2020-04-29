@@ -12,8 +12,8 @@ import UIKit
 class GIFImageCollectionViewCell: UICollectionViewCell {
   private let imageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFill
-    imageView.clipsToBounds = true
+    imageView.layer.cornerRadius = 4
+    imageView.layer.masksToBounds = true
     return imageView
   }()
   private var imageDownloadTask: URLSessionDataTask?
