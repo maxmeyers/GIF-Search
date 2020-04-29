@@ -63,7 +63,7 @@ class GiphyGIFSearchClient: GIFSearchClient {
       "q": query,
       "limit": "\(limit)",
       "offset": "\(offset)",
-    ].map { URLQueryItem(name: $0.key, value: $0.value) }
+      ].map { URLQueryItem(name: $0.key, value: $0.value) }
     
     let task = URLSession.shared.dataTask(
       with: URLRequest(url: urlComponents.url!)

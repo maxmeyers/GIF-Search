@@ -11,9 +11,16 @@ import UIKit
 
 protocol GIFSearchInteractorDelegate: AnyObject {
   func gifSearchInteractorDidResetImages(_ interactor: GIFSearchInteractor)
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, didInsertImagesAtIndices indices: [Int])
+  func gifSearchInteractor(
+    _ interactor: GIFSearchInteractor,
+    didInsertImagesAtIndices indices: [Int]
+  )
 
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, displayActionSheetWithOptions options: [ActionOption], forImageAtIndex index: Int)
+  func gifSearchInteractor(
+    _ interactor: GIFSearchInteractor,
+    displayActionSheetWithOptions options: [ActionOption],
+    forImageAtIndex index: Int
+  )
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data)
 }
 
@@ -34,7 +41,11 @@ class GIFSearchInteractor {
   
   private var currentResult: (query: String, pagination: Pagination)?
   
-  init(gifSearchClient: GIFSearchClient, photoLibraryClient: PhotoLibraryClient, clipboardClient: ClipboardClient) {
+  init(
+    gifSearchClient: GIFSearchClient,
+    photoLibraryClient: PhotoLibraryClient,
+    clipboardClient: ClipboardClient
+  ) {
     self.gifSearchClient = gifSearchClient
     self.photoLibraryClient = photoLibraryClient
     self.clipboardClient = clipboardClient
@@ -63,7 +74,11 @@ class GIFSearchInteractor {
   }
   
   func gifSelected(at index: Int) {
-    delegate?.gifSearchInteractor(self, displayActionSheetWithOptions: ActionOption.allCases, forImageAtIndex: index)
+    delegate?.gifSearchInteractor(
+      self,
+      displayActionSheetWithOptions: ActionOption.allCases,
+      forImageAtIndex: index
+    )
   }
   
   func actionOptionSelected(_ actionOption: ActionOption, withImageData imageData: Data) {
@@ -80,7 +95,11 @@ class GIFSearchInteractor {
   }
   
   private func loadGIFs(with query: String, offset: Int) {
-    gifSearchClient.fetchGIFImages(with: query, limit: 25, offset: UInt(offset)) { [weak self] result in
+    gifSearchClient.fetchGIFImages(
+      with: query,
+      limit: 25,
+      offset: UInt(offset)
+    ) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success((let images, let pagination)):

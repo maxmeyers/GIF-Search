@@ -23,7 +23,7 @@ class GIFSearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     interactor.delegate = self
     
     gifSearchView.delegate = self
@@ -63,30 +63,45 @@ extension GIFSearchViewController: GIFSearchInteractorDelegate {
     }
   }
   
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, didInsertImagesAtIndices indices: [Int]) {
+  func gifSearchInteractor(
+    _ interactor: GIFSearchInteractor,
+    didInsertImagesAtIndices indices: [Int]
+  ) {
     DispatchQueue.main.async {
       self.gifSearchView.insertItems(at: indices)
     }
   }
   
-  func gifSearchInteractor(_ interactor: GIFSearchInteractor, displayActionSheetWithOptions options: [ActionOption], forImageAtIndex index: Int) {
+  func gifSearchInteractor(
+    _ interactor: GIFSearchInteractor,
+    displayActionSheetWithOptions options: [ActionOption],
+    forImageAtIndex index: Int
+  ) {
     guard let sourceView = gifSearchView.viewForImageAtIndex(index) else { return }
     
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     alertController.popoverPresentationController?.sourceView = sourceView
-
+    
     for option in options {
-      alertController.addAction(UIAlertAction(title: option.title, style: .default, handler: { [weak self] _ in
-        guard let self = self, let imageData = self.gifSearchView.imageDataAtIndex(index) else { return }
-        self.interactor.actionOptionSelected(option, withImageData: imageData)
-      }))
+      alertController.addAction(
+        UIAlertAction(title: option.title, style: .default, handler: { [weak self] _ in
+          guard
+            let self = self,
+            let imageData = self.gifSearchView.imageDataAtIndex(index)
+            else { return }
+          self.interactor.actionOptionSelected(option, withImageData: imageData)
+        })
+      )
     }
     alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     present(alertController, animated: true)
   }
   
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data) {
-    let activityViewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+    let activityViewController = UIActivityViewController(
+      activityItems: [data],
+      applicationActivities: nil
+    )
     present(activityViewController, animated: true)
   }
 }
@@ -94,28 +109,31 @@ extension GIFSearchViewController: GIFSearchInteractorDelegate {
 extension GIFSearchViewController: GIFSearchViewDelegate {
   func gifSearchView(_ gifSearchView: GIFSearchView, didUpdateQuery query: String?) {
     searchDebounceTimer?.invalidate()
-
+    
     guard let query = query, query.count > 0 else {
       interactor.reset()
       return
     }
     
-    searchDebounceTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { [weak self] _ in
-      guard let self = self else { return }
-      self.interactor.fetchGIFs(with: query)
+    searchDebounceTimer = Timer.scheduledTimer(
+      withTimeInterval: 1,
+      repeats: false,
+      block: { [weak self] _ in
+        guard let self = self else { return }
+        self.interactor.fetchGIFs(with: query)
     })
   }
-
+  
   func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?) {
     searchDebounceTimer?.invalidate()
-
+    
     guard let query = query else {
       interactor.reset()
       return
     }
     interactor.fetchGIFs(with: query)
   }
-
+  
   func gifSearchView(_ gifSearchView: GIFSearchView, didSelectImageAtIndex index: Int) {
     interactor.gifSelected(at: index)
   }

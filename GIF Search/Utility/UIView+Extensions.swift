@@ -8,20 +8,7 @@
 
 import UIKit
 
-extension UIView {
-  func centerInParent() {
-    guard let superview = superview else {
-      print("centerInParent failed - no superview!")
-      return
-    }
-    
-    translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-      centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-    ])
-  }
-  
+extension UIView {  
   func pinEdgesToParent(excluding excludedEdges: UIRectEdge) {
     let edges = ([.left, .right, .top, .bottom] as [UIRectEdge]).filter {
       !excludedEdges.contains($0)

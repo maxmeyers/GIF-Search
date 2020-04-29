@@ -32,7 +32,7 @@ class GIFSearchView: UIView {
   }
   
   private static let ImageCellReuseIdentifier = "ImageCell"
-
+  
   private let searchBar: UISearchBar = {
     let searchBar = UISearchBar()
     searchBar.placeholder = "Search GIFs (via GIPHY)"
@@ -67,8 +67,10 @@ class GIFSearchView: UIView {
   }
   
   func imageDataAtIndex(_ index: Int) -> Data? {
-    guard let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? GIFImageCollectionViewCell else {
-      return nil
+    guard
+      let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+        as? GIFImageCollectionViewCell else {
+          return nil
     }
     return cell.imageData
   }
@@ -89,7 +91,7 @@ class GIFSearchView: UIView {
     addSubview(collectionView)
     collectionView.pinEdgesToParent(excluding: .top)
     collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-
+    
     collectionView.backgroundColor = .systemBackground
     collectionView.register(
       GIFImageCollectionViewCell.self,
@@ -115,30 +117,40 @@ extension GIFSearchView: UISearchBarDelegate, UITextFieldDelegate {
 }
 
 extension GIFSearchView: UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     return dataSource?.gifSearchViewNumberOfImages(self) ?? 0
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: GIFSearchView.ImageCellReuseIdentifier,
       for: indexPath
-    ) as! GIFImageCollectionViewCell
+      ) as! GIFImageCollectionViewCell
     
     guard let image = dataSource?.gifSearchView(self, imageAtIndex: indexPath.item) else {
       return cell
     }
-
+    
     cell.imageURL = image.url
     
     return cell
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath
+  ) -> CGSize {
     guard let image = dataSource?.gifSearchView(self, imageAtIndex: indexPath.item) else {
       return .zero
     }
-
+    
     return CGSize(width: image.size.width, height: image.size.height)
   }
   
@@ -146,7 +158,11 @@ extension GIFSearchView: UICollectionViewDataSource, CHTCollectionViewDelegateWa
     delegate?.gifSearchView(self, didSelectImageAtIndex: indexPath.item)
   }
   
-  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    willDisplay cell: UICollectionViewCell,
+    forItemAt indexPath: IndexPath
+  ) {
     if collectionView.numberOfItems(inSection: 0) - 1 == indexPath.item {
       delegate?.gifSearchViewDidDisplayEndOfList(self)
     }
