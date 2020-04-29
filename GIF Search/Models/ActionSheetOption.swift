@@ -8,9 +8,14 @@
 
 import Foundation
 
+/// Actions that can be taken on an image
 enum ActionOption: CaseIterable {
+  /// Saves the image to a photo library.
   case saveToPhotos
+  
+  /// Copies the image to the clipboard.
   case copyToClipboard
+  
+  /// Shares the image using the system share sheet.
   case share
-  case showFullscreen
 }

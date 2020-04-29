@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An interface for interacting with a Photo Library.
 protocol PhotoLibraryClient {
   func saveGIFImageDataToPhotoLibrary(_ data: Data)
 }

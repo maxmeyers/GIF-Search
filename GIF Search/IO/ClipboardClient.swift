@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An interface for interacting with a clipboard.
 protocol ClipboardClient {
   func saveGIFDataToClipboard(_ data: Data)
 }

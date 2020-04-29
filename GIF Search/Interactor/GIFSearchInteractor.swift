@@ -10,17 +10,27 @@ import Foundation
 import UIKit
 
 protocol GIFSearchInteractorDelegate: AnyObject {
+  /// Called when the interactor has reset all the images.
+  
   func gifSearchInteractorDidResetImages(_ interactor: GIFSearchInteractor)
+  
+  /// Called when the interactor as inserted new images.
+  
   func gifSearchInteractor(
     _ interactor: GIFSearchInteractor,
     didInsertImagesAtIndices indices: [Int]
   )
-
+  
+  /// Called when the interactor wants the delegate to display an action sheet with various options.
+  
   func gifSearchInteractor(
     _ interactor: GIFSearchInteractor,
     displayActionSheetWithOptions options: [ActionOption],
     forImageAtIndex index: Int
   )
+  
+  /// Called when the interactor wnats the delegate to open a share sheet.
+  
   func gifSearchInteractor(_ interactor: GIFSearchInteractor, shareGIFWithData data: Data)
 }
 
@@ -51,15 +61,19 @@ class GIFSearchInteractor {
     self.clipboardClient = clipboardClient
   }
   
+  /// Remove any existing images.
   func reset() {
     images = []
+    currentResult = nil
   }
   
+  /// Start a new GIF search with the given query string.
   func fetchGIFs(with query: String) {
     images = []
     loadGIFs(with: query, offset: 0)
   }
   
+  /// Continue the previous GIF search if there are more GIFs to be fetched.
   func fetchMoreGIFsIfNecessary() {
     guard let currentResult = currentResult else {
       return
@@ -73,6 +87,7 @@ class GIFSearchInteractor {
     }
   }
   
+  /// Should be called when the user has selected a particular image.
   func gifSelected(at index: Int) {
     delegate?.gifSearchInteractor(
       self,
@@ -81,6 +96,7 @@ class GIFSearchInteractor {
     )
   }
   
+  /// Should be called when the user has selected a particular action from an action sheet.
   func actionOptionSelected(_ actionOption: ActionOption, withImageData imageData: Data) {
     switch actionOption {
     case .saveToPhotos:
@@ -89,8 +105,6 @@ class GIFSearchInteractor {
       clipboardClient.saveGIFDataToClipboard(imageData)
     case .share:
       delegate?.gifSearchInteractor(self, shareGIFWithData: imageData)
-    default:
-      print("selected \(actionOption)")
     }
   }
   

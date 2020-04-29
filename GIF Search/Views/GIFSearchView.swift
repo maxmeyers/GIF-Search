@@ -10,14 +10,24 @@ import CHTCollectionViewWaterfallLayout
 import UIKit
 
 protocol GIFSearchViewDataSource: AnyObject {
+  /// Returns the number of images to be displayed in the `GIFSearchView`.
   func gifSearchViewNumberOfImages(_ gifSearchView: GIFSearchView) -> Int
+  
+  /// Returns the image to be displayed at the specified index.
   func gifSearchView(_ gifSearchView: GIFSearchView, imageAtIndex index: Int) -> GIFImage
 }
 
 protocol GIFSearchViewDelegate: AnyObject {
+  /// Called when the view's query input has been updated.
   func gifSearchView(_ gifSearchView: GIFSearchView, didUpdateQuery query: String?)
+  
+  /// Called when the view's search button has been pressed.
   func gifSearchView(_ gifSearchView: GIFSearchView, didSearchWithQuery query: String?)
+  
+  /// Called when an image in the view has been selected.
   func gifSearchView(_ gifSearchView: GIFSearchView, didSelectImageAtIndex index: Int)
+  
+  /// Called when the last image in the list has been displayed.
   func gifSearchViewDidDisplayEndOfList(_ gifSearchView: GIFSearchView)
 }
 
@@ -54,18 +64,22 @@ class GIFSearchView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  /// Makes the view's search bar active.
   func activateSearchField() {
     searchBar.becomeFirstResponder()
   }
   
+  /// Reloads the images from the view's `dataSource`.
   func reloadData() {
     collectionView.reloadData()
   }
   
+  /// Loads new images at the specified indices.
   func insertItems(at indices: [Int]) {
     collectionView.insertItems(at: indices.map { IndexPath(item: $0, section: 0) })
   }
   
+  /// Returns the image data from the specified index, if it is present.
   func imageDataAtIndex(_ index: Int) -> Data? {
     guard
       let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
@@ -75,6 +89,7 @@ class GIFSearchView: UIView {
     return cell.imageData
   }
   
+  /// Returns the view for the image at the specified index.
   func viewForImageAtIndex(_ index: Int) -> UIView? {
     return collectionView.cellForItem(at: IndexPath(item: index, section: 0))
   }

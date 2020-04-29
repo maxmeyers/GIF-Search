@@ -8,7 +8,12 @@
 
 import Foundation
 
+/// An individual GIF Image
 struct GIFImage {
+  
+  /// The URL of the GIF.
   let url: URL
+  
+  /// The pixel dimensions of the GIF.
   let size: (width: Int, height: Int)
 }

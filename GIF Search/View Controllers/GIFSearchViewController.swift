@@ -162,8 +162,6 @@ fileprivate extension ActionOption {
       return "Copy"
     case .share:
       return "Share"
-    case .showFullscreen:
-      return "Show Fullscreen"
     }
   }
 }

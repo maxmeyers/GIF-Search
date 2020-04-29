@@ -18,6 +18,7 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
   }()
   private var imageDownloadTask: URLSessionDataTask?
   
+  /// The URL of the GIF to be dipslayed in the cell.
   var imageURL: URL? {
     didSet {
       if let imageURL = imageURL {
@@ -30,6 +31,7 @@ class GIFImageCollectionViewCell: UICollectionViewCell {
     }
   }
   
+  /// The data of the GIF displayed in the cell, if any.
   var imageData: Data? {
     get {
       return imageView.gifImage?.imageData
